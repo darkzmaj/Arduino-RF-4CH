@@ -1,0 +1,209 @@
+// prebacivanje tastera u stanje prekidaca
+
+
+const int in1 = 8;
+const int in2 = 9;
+const int in3 = 10;
+const int in4 = 11;
+const int in5 = 12;
+const int in6 = A0;
+
+const int out1 = 2;
+const int out2 = 3;
+const int out3 = 4;
+const int out4 = 5;
+const int out5 = 6;
+const int out6 = 7;
+
+int count_1 = 0;
+int count_2 = 0;
+int count_3 = 0;
+int count_4 = 0;
+//int count_5 = 0;
+//int count_6 = 0;
+
+int count_a1 = 0;
+
+boolean status_1;
+boolean status_2;
+boolean status_3;
+boolean status_4;
+boolean general_status;
+
+void setup() {
+
+  Serial.begin (9600);  // komunikacija za testiranje
+
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+
+
+  pinMode(8, INPUT);
+  pinMode(9, INPUT);
+  pinMode(10, INPUT);
+  pinMode(11, INPUT);
+  pinMode(12, INPUT);
+  pinMode(A0, INPUT);
+
+
+  /* digitalWrite (out1, 1);
+   delay (200);
+   digitalWrite (out2, 1);
+   delay (200);
+   digitalWrite (out3, 1);
+   delay (200);
+   digitalWrite (out4, 1);
+   delay (200);
+   digitalWrite (out5, 1);
+   delay (200);
+   digitalWrite (out6, 1);
+  */
+
+  Serial.println ("TEST OK,");
+}
+
+void loop() {
+  // testiranje ulza
+
+  // Ulzaz 1
+  if ((digitalRead (in1) == 0) && (count_1 < 20)) {
+
+    count_1 ++;
+    if (16 < count_1) {
+      count_1 = 25;
+      //   akcija
+      if (digitalRead (out1) == 1) {
+        status_1 = 0;
+      }
+      else {
+        status_1 = 1;
+
+        //Kraj akcije
+      }
+      digitalWrite (out1, status_1);
+      general_status = status_1;
+    }
+  }
+  if (digitalRead (in1) == 1) {
+    count_1 = 0;
+  }
+
+
+  // Ulzaz 2
+  if ((digitalRead (in2) == 0) && (count_2 < 20)) {
+    count_2 ++;
+    if (16 < count_2) {
+      count_2 = 25;
+      //   akcija
+      if (digitalRead (out2) == 1) {
+        status_2 = 0;
+      }
+      else {
+        status_2 = 1;
+        //Kraj akcije
+      }
+      digitalWrite (out2, status_2);
+      general_status = status_2;
+    }
+  }
+  if (digitalRead (in2) == 1) {
+    count_2 = 0;
+  }
+
+  // Ulzaz 3
+  if ((digitalRead (in3) == 0) && (count_3 < 20)) {
+    count_3 ++;
+    if (16 < count_3) {
+      count_3 = 25;
+      //   akcija
+      if (digitalRead (out3) == 1) {
+        status_3 = 0;
+      }
+      else {
+        status_3 = 1;
+
+        //Kraj akcije
+      }
+      digitalWrite (out3, status_3);
+      general_status = status_3;
+    }
+  }
+  if (digitalRead (in3) == 1) {
+    count_3 = 0;
+  }
+
+
+  // Ulzaz 4
+  if ((digitalRead (in4) == 0) && (count_4 < 20)) {
+    count_4 ++;
+    if (16 < count_4) {
+      count_4 = 25;
+      //   akcija
+      if (digitalRead (out4) == 1) {
+        status_4 = 0;
+      }
+      else {
+        status_4 = 1;
+
+        //Kraj akcije
+      }
+      digitalWrite (out4, status_4);
+      general_status = status_4;
+    }
+  }
+  if (digitalRead (in4) == 1) {
+    count_4 = 0;
+  }
+
+
+
+  // Ulaz 5
+  if (digitalRead (in5) == 0) {
+    digitalWrite (out5, 1);
+  }
+  else {
+    digitalWrite (out5, 0);
+  }
+
+  // Ulaz 6
+  if (digitalRead (in6) == 0) {
+    digitalWrite (out6, 1);
+  }
+  else {
+    digitalWrite (out6, 0);
+  }
+
+
+
+
+
+
+  // Zadrzavanje tastera svetla
+
+  if ((count_1 == 25) || (count_2 == 25)  || (count_3 == 25)  || (count_4 == 25)) {
+
+    if (count_a1 == 160) {
+      count_a1 = 1250;
+
+      //  akcija
+      //   Serial.println (general_status);
+      //   Sledi akciju koju je imala zadnja sijalica
+
+      digitalWrite (out1, general_status);
+      digitalWrite (out2, general_status);
+      digitalWrite (out3, general_status);
+      digitalWrite (out4, general_status);
+    }
+    if (count_a1 < 1200) {
+      count_a1 ++;
+    }
+  }
+  else {
+    count_a1 = 0;
+  }
+  delay (10);
+}

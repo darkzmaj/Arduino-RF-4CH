@@ -1,0 +1,3 @@
+Vladini prekidaci za Maksu iz Ks.
+Unutra je koncept kako da kada arduino bude siguran kada se pritisne dugme na daljinskom.
+Takodje, mislim da ima koncept sta da radi uredjaj kada se zadrzi dugme.
