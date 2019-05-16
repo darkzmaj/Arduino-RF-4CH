@@ -1,12 +1,18 @@
-int ledPin4 = 6; //Relej D
-int ledPin3 = 5; //Relej C
-int ledPin2 = 4; //Relej B
 int ledPin1 = 3; //Relej A
+int ledPin2 = 4; //Relej B
+int ledPin3 = 5; //Relej C
+int ledPin4 = 6; //Relej D
 
-/*A1 = A
+/*
+  Arduino ima pinove A1, A2, A3 i A4
+  Svaki od pomenutih pinova aktivira jedan relej
+  Prema sledećoj šemi:
+
+  A1 = A
   A3 = B
   A0 = C
   A2 = D
+ 
  */
 
 void setup() {
@@ -23,7 +29,7 @@ pinMode(ledPin4, OUTPUT);
 
 void loop() {
   lampa ();
-  komp();
+  kompjuter();
   ledTraka();
   ugasiSveDelay();
   
@@ -32,26 +38,31 @@ void loop() {
 
 void lampa ()
 {
- if(digitalRead(A1)) // ako pritisnes A
-  digitalWrite(ledPin1, HIGH); //aktiviraj pin1
-
-  if(digitalRead(A3)) //ako B
-  digitalWrite(ledPin1, LOW); //iskljuci pin1
+ // Dugme A na prekidaču aktivira pin A1
+ if(digitalRead(A1)) 
+  digitalWrite(ledPin1, HIGH);
+ 
+ // Dugme B na prekidaču deaktivira pin A1
+ if(digitalRead(A3))
+  digitalWrite(ledPin1, LOW); 
 }
 
-void komp() 
+void kompjuter() 
 {
-  if(digitalRead(A2))  //ukljuci i iskljuci pin2
+  // Dugme D na prekidaču aktivira A2 i deaktivira nakon 100 ms.
+  //Svrha je ukljucivanje kompjutera koji zahteva kratak kontakt, a ne konstantan kontakt
+  if(digitalRead(A2))  
   digitalWrite(ledPin2, HIGH);
   delay (100);
   digitalWrite(ledPin2, LOW);
 }
 
 void ledTraka(){
+  // Dugme C na prekidaču aktivira pin A0
   if(digitalRead(A0))
   digitalWrite(ledPin3, HIGH);
 
-  if(digitalRead(A3)) //c 2
+  if(digitalRead(A3))
   digitalWrite(ledPin3, LOW);
 }
 
