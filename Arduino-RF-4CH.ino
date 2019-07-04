@@ -50,41 +50,41 @@ void kompjuter()
   // Dugme D na prekidaču aktivira A2 i deaktivira nakon 100 ms.
   // Svrha je ukljucivanje kompjutera koji zahteva kratak kontakt, a ne konstantan kontakt
   if (digitalRead(A2))
-    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin3, HIGH);
   delay (100);
-  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
 }
 
 void ledTraka() {
   // Dugme C na prekidaču aktivira pin A0
   if (digitalRead(A0))
-    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin2, HIGH);
 
   if (digitalRead(A3))
-    digitalWrite(ledPin3, LOW);
+    digitalWrite(ledPin2, LOW);
 }
 
 void ugasiSveDelay() {
   // Ova metoda iskljucuje svetla u kuci nakon odredjenog vremena
   // Nakon pritiska C i B na prekidacu
-  // Aktivira se relej povezan na ledPin3
-  // Koji ce se okinuti 7 puta, kako bi oznacio pocetak rada
+  // Aktivira se relej povezan na ledPin4
+  // Koji ce se okinuti107 puta, kako bi oznacio pocetak rada
 
   if ((digitalRead(A0)) && (digitalRead(A3))) {
     int a = 0;
-    while ( a <= 7) {
-      digitalWrite(ledPin3, HIGH);
+    while ( a <= 10) {
+      digitalWrite(ledPin4, HIGH);
       delay(1000);
-      digitalWrite(ledPin3, LOW);
+      digitalWrite(ledPin4, LOW);
       delay(1000);
       a++;
     };
 
-    // Posle 7 okidanja releja
+    // Posle 10 okidanja releja
     // Ukljucice se led traka i lampe
     // Koje ce ostati ukljucene koliko je navedeno u kodu ispod
 
-    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin1, HIGH);
     int cekanje = 60; // Posle koliko sekundi da se sva svetla iskljuce
     int i = 0;
@@ -93,7 +93,7 @@ void ugasiSveDelay() {
       i++;
     }
     // Potom ce se sve iskljuciti
-    digitalWrite(ledPin3, LOW);
+    digitalWrite(ledPin2, LOW);
     digitalWrite(ledPin1, LOW);
   }
 }
@@ -103,13 +103,13 @@ void nocDelay() {
   if ((digitalRead(A0)) && (digitalRead(A3))) {
     int a = 0;
     while ( a <= 7) {
-      digitalWrite(ledPin3, HIGH);
+      digitalWrite(ledPin2, HIGH);
       delay(1000);
-      digitalWrite(ledPin3, LOW);
+      digitalWrite(ledPin2, LOW);
       delay(1000);
       a++;
     };
-    digitalWrite(ledPin3, HIGH);
+    digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin1, LOW);
     int cekanje = 60; // Posle koliko sekundi da se sva svetla iskljuce
     int i = 0;
@@ -119,6 +119,6 @@ void nocDelay() {
     }
     // Potom ce se sve iskljuciti
     digitalWrite(ledPin3, LOW);
-    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin2, LOW);
   }
 }
