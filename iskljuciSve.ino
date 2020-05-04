@@ -5,13 +5,12 @@ void ugasiSveDelay() {
   // Koji ce se okinuti107 puta, kako bi oznacio pocetak rada
 
   if ((digitalRead(A0)) && (digitalRead(A3))) {
-    int a = 0;
-    while ( a <= 10) {
-      digitalWrite(ledPin4, HIGH);
+    for (int i = 0; i <= 10; i++ {
+    digitalWrite(ledPin4, HIGH);
       delay(1000);
       digitalWrite(ledPin4, LOW);
       delay(1000);
-      a++;
+
     };
 
     // Posle 10 okidanja releja
@@ -20,11 +19,9 @@ void ugasiSveDelay() {
 
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin1, HIGH);
-    int cekanje = 60; // Posle koliko sekundi da se sva svetla iskljuce
-    int i = 0;
-    while (i <= cekanje) {
-      delay(1000);
-      i++;
+
+    for (int i = 0; i <= 10; i++ {
+    delay(1000);
     }
     // Potom ce se sve iskljuciti
     digitalWrite(ledPin2, LOW);
