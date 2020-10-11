@@ -5,7 +5,7 @@ void ugasiSveDelay() {
   // Koji ce se okinuti107 puta, kako bi oznacio pocetak rada
 
   if ((digitalRead(A0)) && (digitalRead(A3))) {
-    for (int i = 0; i <= 10; i++ {
+    for (int i = 0; i <= 10; i++) {
     digitalWrite(ledPin4, HIGH);
       delay(1000);
       digitalWrite(ledPin4, LOW);
@@ -20,7 +20,7 @@ void ugasiSveDelay() {
     digitalWrite(ledPin2, HIGH);
     digitalWrite(ledPin1, HIGH);
 
-    for (int i = 0; i <= 10; i++ {
+    for (int i = 0; i <= 10; i++) {
     delay(1000);
     }
     // Potom ce se sve iskljuciti
