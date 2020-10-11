@@ -1,13 +1,17 @@
-int ledPin1 = 3; //Relej A
-int ledPin2 = 4; //Relej B
-int ledPin3 = 5; //Relej C
-int ledPin4 = 6; //Relej D
+// Code is written for Arduino Pro Mini and might not work on different versions of Arduino
+// Author: Jovan Jovanovic
+
+//#define DEBUG 1  //Uncomment to enable debug statements
+
+
+int ledPin1 = 2; // Relay A
+int ledPin2 = 3; // Relay B
+int ledPin3 = 4; // Relay C
+int ledPin4 = 5; // Relay D
+int buzzer = 10;
+int delayTime = 30; // Time seconds
 
 /*
-  Arduino ima pinove A1, A2, A3 i A4
-  Svaki od pomenutih pinova aktivira jedan relej
-  Prema sledećoj šemi:
-
   A1 = A
   A3 = B
   A0 = C
@@ -16,6 +20,7 @@ int ledPin4 = 6; //Relej D
 */
 
 void setup() {
+  Serial.begin(9600);
   pinMode(A0, INPUT);
   pinMode(A1, INPUT);
   pinMode(A2, INPUT);
@@ -24,12 +29,14 @@ void setup() {
   pinMode(ledPin2, OUTPUT);
   pinMode(ledPin3, OUTPUT);
   pinMode(ledPin4, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+
 }
 
 void loop() {
-  lampa (); // Ukljuci stone lampe
-  kompjuter(); // Ukljuci/iskljuci kompjuter
-  ledTraka(); // Ukljuci led trake
-  ugasiSveDelay(); // Iskljuci sve nakon zadatog delay-a
-  nocDelay();
+  lamp ();
+  togglePC(); 
+  ledStrip(); 
+  killEverything();
+  nightMode();
 }
