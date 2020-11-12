@@ -1,7 +1,7 @@
-// Code is written for Arduino Pro Mini and might not work on different versions of Arduino
+// Code is written for Arduino Pro Mini and might not work on different versions of Arduino 
 // Author: Jovan Jovanovic
 
-//#define DEBUG 1  //Uncomment to enable debug statements
+#define DEBUG 1  //Uncomment to enable debug statements
 
 
 int ledPin1 = 2; // Relay A
@@ -9,14 +9,14 @@ int ledPin2 = 3; // Relay B
 int ledPin3 = 4; // Relay C
 int ledPin4 = 5; // Relay D
 int buzzer = 10;
-int delayTime = 30; // Time seconds
+int delayTime = 90; // Time seconds
+
 
 /*
   A1 = A
   A3 = B
   A0 = C
   A2 = D
-
 */
 
 void setup() {
@@ -34,9 +34,11 @@ void setup() {
 }
 
 void loop() {
-  lamp ();
-  togglePC(); 
-  ledStrip(); 
-  killEverything();
-  nightMode();
+    timer();
+    lamp();
+    togglePC();
+    ledStrip();
+    killEverything();
+    nightMode();
+  //buzzerTest();
 }
