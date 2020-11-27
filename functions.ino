@@ -7,7 +7,7 @@
 
 void lamp() {
 
-  if (digitalRead(A1)) {     // A
+  if (digitalRead(A1)) {     // If press button A
     digitalWrite(ledPin1, HIGH);
 
 #ifdef DEBUG
@@ -15,7 +15,7 @@ void lamp() {
 #endif
   }
 
-  if (digitalRead(A3)) {     // B
+  if (digitalRead(A3)) {     // If press button B
     digitalWrite(ledPin1, LOW);
 
 #ifdef DEBUG
@@ -27,40 +27,34 @@ void lamp() {
 // End lamp()
 ///////////////////////////////////////////////////
 
-void nightMode() {
+void nightTime() {
 
-  if ((digitalRead(A0)) && (digitalRead(A3))) {  // B i C
+  if (digitalRead(A0) && digitalRead(A3)) {  // If press button B + C
+    buzz();
+    delay(100);
+    digitalWrite(ledPin1, HIGH);
 
-    for (int i = 0; i < 3; i++) {  // Sound alerts, beep beep beep
-      digitalWrite(buzzer, HIGH);
-      delay(100);
-      digitalWrite(buzzer, LOW);
-      delay(100);
-    }
+
+
+    delay(1000);
     for (int i = 0; i <= delayTime; i++) {
       delay(1000);
     }
-    digitalWrite(ledPin3, LOW);
-    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin1, LOW);
 
 #ifdef DEBUG
-    Serial.println("Night mode ON");
+    Serial.println("Night time ON");
 #endif
   }
 }
 
-// End nightMode()
+// End nightTime()
 ///////////////////////////////////////////////////
 
-void killEverything() {
+void killAll() {
 
   if ((digitalRead(A0)) && (digitalRead(A2))) {  // C i D
-    for (int i = 0; i < 3; i++) {
-      digitalWrite(buzzer, HIGH);
-      delay(100);
-      digitalWrite(buzzer, LOW);
-      delay(100);
-    }
+
 
     for (int i = 0; i <= delayTime; i++) {
       delay(1000);
