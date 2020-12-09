@@ -33,12 +33,9 @@ void nightTime() {
     buzz();
     delay(100);
     digitalWrite(ledPin1, HIGH);
-
-
-
     delay(1000);
     for (int i = 0; i <= delayTime; i++) {
-      delay(1000);
+      delay(2000); // Some bug, this counts as one seconds, do not change
     }
     digitalWrite(ledPin1, LOW);
 

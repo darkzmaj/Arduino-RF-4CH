@@ -9,7 +9,7 @@ int ledPin2 = 3; // Relay B
 int ledPin3 = 4; // Relay C
 int ledPin4 = 5; // Relay D
 int buzzer = 10;
-int delayTime = 90; // Time in seconds
+int delayTime = 180; // Time in seconds
 
 
 /*
